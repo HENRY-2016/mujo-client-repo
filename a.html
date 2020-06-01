@@ -1,0 +1,233 @@
+
+
+<html>
+<head>
+	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+	<title> MUJO | A</title>
+	<script src="static/js/main.js"></script>
+	<script src="static/js/movies.js"> </script>
+	<link rel="stylesheet" type="text/css" href="static/css/main.css">
+	<link rel="stylesheet" type="text/css" href="static/css/w3.css">
+</head>
+<script>
+function Onoline_Fatch_User_Online_Data ()
+	{
+		Add_Movies_Gallery_Iframe ("a_movie_endpoint");
+		Load_Movie_Names ("movie-name","a_names_endpoint");
+		Get_Movie_Price ("prices-from-server-label", "a_price_endpoint");
+	}
+function Check_Network_Status ()
+{
+	display_date ();
+	// Onoline_Fatch_User_Online_Data ()
+    if (!navigator.onLine) {Create_Offline_Label ();}
+	else if (navigator.onLine) 
+		{
+			Add_Movies_Gallery_Iframe ("a_movie_endpoint");
+			Load_Movie_Names ("movie-name","a_names_endpoint");
+			Get_Movie_Price ("prices-from-server-label", "a_price_endpoint");
+		}
+}
+
+</script>
+<body  class="main_body" onload="Check_Network_Status ()" ononline="Onoline_Fatch_User_Online_Data ()">
+
+<div id="main-header">
+	<div  id= "Navigetion" class="header">
+			<!-- ======= CLOSE ====== -->
+		<span href="javascript:void(0)" class="closebtn" onclick="closeNavi()"><label class="close-navi-span"> &times;</label></span><!-- closs the navi -->
+		<div id="our-movies-menu-label-div"> 
+			<label onclick="Load_index ()" class="our-movies-label" > Home </label>
+		</div><br>
+		<div id="our-movies-menu-label-div"> 
+				<label class="our-movies-label" >Movies</label>
+			</div><br>
+			<div id="menu-items-div">
+				<center>
+					<a><label onclick="Load_a_view ()">Aa</label></a>
+					<a><label onclick="Load_b_view ()">Bb</label></a>
+					<a><label onclick="Load_c_view ()">Cc</label></a>
+				</center>
+			</div>
+			<br>
+			<div id="our-movies-menu-label-div"> 
+				<label class="our-movies-label" onclick="Load_developer ()" > Developer</label>
+			</div><br>
+	</div>
+	<div id="NaviDiv">
+		<label class="kone-menu-label" onclick="openMenus()">&#9776;</label>
+		<label class="kone-label">Mujo</label>
+	</div>
+<script>
+function openMenus(){document.getElementById("Navigetion").style.width = "240px"}
+function closeNavi (){document.getElementById("Navigetion").style.width = "0"}  
+</script>
+
+</div> <!-- main-header-->
+<div id="main-body"><br>
+	<center><label class="todays-date-label">Today :: <span id="date-id"></span> </label></center>
+
+	<center><label id="prices-from-server-label" style="display:none" > </label></center>
+	<center><label id="created-prices" style="display:none" ></label></center>
+
+	<center> <div id="offline-label-div" ></div> </center>
+	<center><div id="menu-pics-div"></div></center><br>
+
+	<center>
+		<label class="book-now-label fontstyles" onclick="document.getElementById('id01').style.display='block'">Book Now</label><br>
+		<label class="booked-movie-label fontstyles" onclick="ShowCustomerData ()">Booked Movie</label><br>
+	</center>
+	
+	<div id="id01" class="w3-modal">
+		<div class="w3-modal-content w3-animate-top w3-card-4">
+			<div class="w3-container first-pop-up-window">
+
+				<center><br>
+					<form action="http://192.168.43.140:6060/a_order_post" id="customers-order-form" method="POST" class="order-form">
+						<br>
+						<label class="order-form-lables fontstyles" >Name</label><br>
+						<input id="name" class="form_input" type="text" placeholder="Your Name" name="name" autocomplete="off" required><br>
+				
+						<label class="order-form-lables fontstyles">Movie</label><br>
+						<select id="movie-name" class="form_input_select" onchange="write_beefliver_types ()"><option>Select Movie</option></select><br>
+						<input id="movie" class="form_input" type="text" placeholder="Your Choice" name="movie" readonly autocomplete="off" required><br>
+				
+						<label class="order-form-lables fontstyles">Contacts</label><br>
+						<input id="contacts" class="form_input" type="text" minlength="1" maxlength="10" placeholder="Phone Number" name="contacts" autocomplete="off" required><br>
+				
+						<label class="order-form-lables fontstyles" >Location</label><br>
+						<input id="location" class="form_input" type="text" placeholder="Area" name="location" autocomplete="off" required><br>
+						
+						<label class="order-form-lables fontstyles" id="amount-label">Amount</label><br>
+						<input class="form_input"  placeholder=":: ::" autocomplete="off" id="price-input" name="price" readonly><br><br>
+
+						<button class="cancle-btn fontstyles" type="reset"> Clear</button><br><br>
+						<button type="button" class="submit-btn fontstyles" onclick="ValidateCustomerData ()">Submit</button><br><br>
+						<button class="close-btn fontstyles" type="button" onclick="document.getElementById('id01').style.display='none'"> Close</button><br><br>
+					</form>
+					</center>
+			</div>		
+		</div>
+	</div>				
+	<div id="id02" class="w3-modal">
+	<div class="w3-modal-content w3-animate-top w3-card-4">
+		<header class="w3-container w3-teal"> 
+			<span onclick="document.getElementById('id02').style.display='none'" 
+			class="w3-button w3-display-topright">&times;</span>
+			<h2>Your Order is ..</h2>
+		</header>
+		<div class="w3-container">
+			<center><br>
+				<label class="order-form-lables fontstyles"> Name </label><br>
+				<label class="order-form-confirm-lables" id="NameLabel"> </label><br><br>
+
+				<label class="order-form-lables fontstyles"> Movie</label><br>
+				<label class="order-form-confirm-lables" id="MovieLabel"> </label><br><br>
+
+				<label class="order-form-lables fontstyles">  Contacts </label><br>
+				<label class="order-form-confirm-lables" id="ContactsLabel"> </label><br><br>
+				
+				<label class="order-form-lables fontstyles"> Location </label><br>
+				<label class="order-form-confirm-lables" id="LocationLabel"> </label><br><br>
+
+				<label class="order-form-lables fontstyles" id="amount-label">Amount</label><br>
+				<label class="form_input" id="price-label"> </label><br><br>
+				
+				<button class="cancle-btn fontstyles" type="button" onclick="document.getElementById('id02').style.display='none'"> Cancle</button><br><br>
+				<button class="submit-confirm-btn fontstyles" type="submit"  onclick="SubmitCustomerData ()"> Confirm</button><br>
+				
+			</center>
+		</div>
+		</div>
+	</div>
+	<div id="id011111" class="w3-modal">
+		<div class="w3-modal-content w3-animate-top w3-card-4">
+			<div class="w3-container">
+				<center><br>
+					<label class="order-form-lables fontstyles">Your Movie <br>Order Was </label><br><br>
+					<div id="customer-offline-data-div">
+
+					</div>
+					
+					<button class="close-btn fontstyles" type="button" onclick="document.getElementById('id011111').style.display='none'"> Close</button><br><br>
+				</center>
+			</div>
+		</div>
+	</div>
+
+<script>
+function OpenPopUpConfirmation ()
+{
+	// get_price ();
+	name = document.getElementById("name").value;
+	food = document.getElementById("movie").value;
+	contacts = document.getElementById("contacts").value;
+	cust_location = document.getElementById("location").value;
+	price = document.getElementById("price-input").value;
+
+	document.getElementById("NameLabel").innerHTML = name;
+	document.getElementById("MovieLabel").innerHTML = food;
+	document.getElementById("ContactsLabel").innerHTML = contacts;
+	document.getElementById("LocationLabel").innerHTML = cust_location;
+	document.getElementById("price-label").innerHTML = price;
+
+	document.getElementById('id02').style.display='block';
+}
+
+function write_beefliver_types ()
+{
+	movietype = document.getElementById("movie-name").value;
+	document.getElementById("movie").value = movietype;
+	setTimeout(CalculatePrice, 2000)
+}
+
+function CalculatePrice ()
+{
+	let movietype = document.getElementById("movie").value;
+	let loaded_prices = document.getElementById("prices-from-server-label").innerText
+	let convertedjsobject = JSON.parse(loaded_prices)
+	
+	let price = parseInt(convertedjsobject[movietype]);
+	let formatedprice = price.toLocaleString();
+	document.getElementById("price-input").value = formatedprice;
+}
+function ValidateCustomerData ()
+{
+	let state = document.forms["customers-order-form"].reportValidity();
+	if (state != true) { return;}
+	else {OpenPopUpConfirmation ();}
+}
+
+function SubmitCustomerData ()
+{
+	document.forms["customers-order-form"].submit();
+	SaveCustomerOrder();
+	setTimeout(closepopup ,1000)
+}	
+function closepopup (){document.getElementById('id02').style.display='none';document.getElementById('id01').style.display='none';}
+
+function SaveCustomerOrder ()
+{
+	name = document.getElementById("name").value;
+	food = document.getElementById("movie").value;
+	contacts = document.getElementById("contacts").value;
+	cust_location = document.getElementById("location").value;
+	price = document.getElementById("price-input").value;
+
+	data = '<label class="order-form-lables fontstyles"> Name </label> ' +'<br>'+ name +'<br>'+'<br>'+ '<label class="order-form-lables fontstyles"> movie</label>'+'<br>'+food+'<br>'+'<br>'+'<label class="order-form-lables fontstyles">  Contacts </label>' +'<br>'+contacts+'<br>'+'<br>'+'<label class="order-form-lables fontstyles">  Location </label>'+'<br>'+cust_location+'<br>'+'<br>'+'<label class="order-form-lables fontstyles">  Amount </label>'+'<br>'+price+'<br>'+'<br>';
+	localStorage.setItem("beefliverorder",data);
+}
+function ShowCustomerData (){document.getElementById('id011111').style.display='block';ShowCustomerOrder ();}
+function ShowCustomerOrder (){document.getElementById("customer-offline-data-div").innerHTML = localStorage.getItem("beefliverorder");}
+
+		</script>
+
+
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
+

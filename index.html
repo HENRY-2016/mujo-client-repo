@@ -1,0 +1,72 @@
+
+
+<html>
+<head>
+	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+	<title> MUJO | HOME | CLIENT</title>
+	<script src="static/js/main.js"></script>
+	<script src="static/js/movies.js"> </script>
+	<link rel="stylesheet" type="text/css" href="static/css/main.css">
+	<link rel="stylesheet" type="text/css" href="static/css/w3.css">
+</head>
+
+<body  class="main_body">
+
+<div id="main-header">
+	<div  id= "Navigetion" class="header">
+			<!-- ======= CLOSE ====== -->
+		<span href="javascript:void(0)" class="closebtn" onclick="closeNavi()"><label class="close-navi-span"> &times;</label></span><!-- closs the navi -->
+		<div id="our-avenues-menu-label-div"> 
+			<label onclick="Load_index ()" class="our-avenues-label" > Home </label>
+		</div><br>
+		<div id="our-avenues-menu-label-div"> 
+				<label class="our-avenues-label" >Movies</label>
+			</div><br>
+			<div id="menu-items-div">
+				<center>
+					<a><label onclick="Load_a_view ()">Aa</label></a>
+					<a><label onclick="Load_b_view ()">Bb</label></a>
+					<a><label onclick="Load_c_view ()">Cc</label></a>
+				</center>
+			</div>
+			<br>
+			<div id="our-avenues-menu-label-div"> 
+				<label class="our-avenues-label" onclick="Load_developer ()" > Developer</label>
+			</div><br>
+	</div>
+	<div id="NaviDiv">
+		<label class="kone-menu-label" onclick="openMenus()">&#9776;</label>
+		<label class="kone-label">Mujo</label>
+	</div>
+<script>
+function openMenus(){document.getElementById("Navigetion").style.width = "240px"}
+function closeNavi (){document.getElementById("Navigetion").style.width = "0"}  
+</script>
+
+</div> <!-- main-header-->
+<div id="main-body"><br>
+	<center>
+		<!-- <label class="order-form-lables fontstyles" >Creat Account</label><br>
+		<form action="http://127.0.0.1:6060/beefliver_customer_order" id="customers-order-form" method="POST" class="order-form">
+			<br>
+			<label class="order-form-lables fontstyles" >Fisrt Name</label><br>
+			<input id="name" class="form_input" type="text" placeholder="Local Name" name="name" autocomplete="off" required><br>
+
+			<label class="order-form-lables fontstyles" >Second Name</label><br>
+			<input id="name" class="form_input" type="text" placeholder="English Name" name="name" autocomplete="off" required><br>
+	
+			<label class="order-form-lables fontstyles">Contacts</label><br>
+			<input id="contacts" class="form_input" type="text" minlength="1" maxlength="10" placeholder="Phone Number" name="contacts" autocomplete="off" required><br>
+	
+			<label class="order-form-lables fontstyles" >Area</label><br>
+			<input id="location" class="form_input" type="text" placeholder="Area" name="location" autocomplete="off" required><br>
+			
+			
+			<button class="cancle-btn fontstyles" type="reset"> Clear</button><br><br>
+			<button type="button" class="submit-btn fontstyles" onclick="ValidateCustomerData ()">Submit</button><br><br>
+		</form> -->
+	</center>
+</div>
+</body>
+</html>
+
