@@ -39,9 +39,9 @@ function Check_Network_Status ()
     <div id="our-movies-menu-label-div"> 
         <label onclick="Load_index ()" class="our-movies-label" > Home </label>
     </div><br>
-    <div id="our-movies-menu-label-div"> 
+    <!-- <div id="our-movies-menu-label-div"> 
             <label class="our-movies-label" >Movies</label>
-        </div><br>
+        </div><br> -->
         <div id="menu-items-div">
             <center>
                 <a><label onclick="Load_a_view ()">Aa</label></a>
@@ -51,12 +51,12 @@ function Check_Network_Status ()
         </div>
         <br>
         <div id="our-movies-menu-label-div"> 
-            <label class="our-movies-label" onclick="Load_developer ()" > Developer</label>
+            <!-- <label class="our-movies-label" onclick="Load_developer ()" > Developer</label> -->
         </div><br>
 </div>
 <div id="NaviDiv">
     <label class="kone-menu-label" onclick="openMenus()">&#9776;</label>
-    <label class="kone-label">Diversity Sounds</label>
+    <label class="kone-label">My title</label>
 </div>
 <script>
 function openMenus(){document.getElementById("Navigetion").style.width = "240px"}
@@ -76,7 +76,7 @@ function closeNavi (){document.getElementById("Navigetion").style.width = "0"}
 
 	<center>
 		<label class="book-now-label fontstyles" onclick="document.getElementById('id01').style.display='block'">Book Now</label><br>
-		<label class="booked-movie-label fontstyles" onclick="ShowCustomerData ()">Booked Movie</label><br>
+		<label class="booked-movie-label fontstyles" onclick="ShowCustomerData ()">Booked Items</label><br>
 	</center>
 	
 	<div id="id01" class="w3-modal">
@@ -89,8 +89,8 @@ function closeNavi (){document.getElementById("Navigetion").style.width = "0"}
 						<label class="order-form-lables fontstyles" >Name</label><br>
 						<input id="name" class="form_input" type="text" placeholder="Your Name" name="name" autocomplete="off" required><br>
 				
-						<label class="order-form-lables fontstyles">Movie</label><br>
-						<select id="movie-name" class="form_input_select" onchange="write_beefliver_types ()"><option>Select Movie</option></select><br>
+						<label class="order-form-lables fontstyles">Item Name</label><br>
+						<select id="movie-name" class="form_input_select" onchange="write_beefliver_types ()"><option>Select Name</option></select><br>
 						<input id="movie" class="form_input" type="text" placeholder="Your Choice" name="movie" readonly autocomplete="off" required><br>
 				
 						<label class="order-form-lables fontstyles">Contacts</label><br>
@@ -122,7 +122,7 @@ function closeNavi (){document.getElementById("Navigetion").style.width = "0"}
 				<label class="order-form-lables fontstyles"> Name </label><br>
 				<label class="order-form-confirm-lables" id="NameLabel"> </label><br><br>
 
-				<label class="order-form-lables fontstyles"> Movie</label><br>
+				<label class="order-form-lables fontstyles"> Item Name</label><br>
 				<label class="order-form-confirm-lables" id="MovieLabel"> </label><br><br>
 
 				<label class="order-form-lables fontstyles">  Contacts </label><br>
@@ -145,7 +145,7 @@ function closeNavi (){document.getElementById("Navigetion").style.width = "0"}
 		<div class="w3-modal-content w3-animate-top w3-card-4">
 			<div class="w3-container">
 				<center><br>
-					<label class="order-form-lables fontstyles">Your Movie <br>Order Was </label><br><br>
+					<label class="order-form-lables fontstyles">Your Item <br>Order Was </label><br><br>
 					<div id="customer-offline-data-div">
 
 					</div>
